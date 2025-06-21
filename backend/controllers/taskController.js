@@ -1,4 +1,4 @@
-const Task = require("../models/taskmodels");
+const Task = require("../models/taskmodels.js");
 
 exports.getTasks = async (req, res) => {
   const { status, assignedTo } = req.query;
