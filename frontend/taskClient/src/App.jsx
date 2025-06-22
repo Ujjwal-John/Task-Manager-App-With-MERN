@@ -19,7 +19,7 @@ const App = () => {
   }, [filter]);
 
   return (
-    <div  style={{ background: "linear-gradient(to right, #3b82f6, #ec4899)" }}>
+    <div  style={{ background: "linear-gradient(to right, #3b82f6, #ec4899)" , minHeight: "100vh" }}>
       <div className="container pt-4" >
         <h2 className='text-center'>Task Manager</h2>
         <TaskForm onTaskAdded={fetchTasks} />
