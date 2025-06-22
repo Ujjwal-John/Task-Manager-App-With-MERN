@@ -8,7 +8,7 @@ const TaskForm = ({ onTaskAdded }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/api/tasks', form);
+    await axios.post('https://task-manager-app-with-mern.onrender.com/api/tasks', form);
     setForm({ title: '', description: '', assignedTo: '', status: 'Pending' });
     onTaskAdded();
   };
