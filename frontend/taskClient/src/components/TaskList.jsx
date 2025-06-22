@@ -25,11 +25,11 @@ const TaskList = ({ tasks, onTaskUpdated, onTaskDeleted, setFilter, filter }) =>
 
   return (
     <>
-      <div className="d-flex gap-2 mb-3 justify-content-center w-50 align-items-center">
+      <div className="d-flex flex-column flex-md-row gap-2 mb-3 justify-content-center w-100 align-items-center">
         <label htmlFor="filter-assignee" className="form-label mb-0 me-2 fw-bold" >Filter by assignee</label>
         <input
           id="filter-assignee"  
-          className="form-control"
+          className="form-control mb-2 mb-md-0"
           placeholder="Filter by assignee"
           value={filter.assignedTo || ''}
           onChange={e => setFilter({ ...filter, assignedTo: e.target.value })}
@@ -50,9 +50,9 @@ const TaskList = ({ tasks, onTaskUpdated, onTaskDeleted, setFilter, filter }) =>
 
       <div className="row">
         {tasks.map(task => (
-          <div key={task._id} className="col-md-3 mb-4">
+          <div key={task._id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
             <div className="card h-100">
-              <div className="card-body">
+              <div className="card-body d-flex flex-column">
                 {editing === task._id ? (
                   <>
                     <label htmlFor={`edit-title-${task._id}`}>Title</label>
@@ -83,7 +83,7 @@ const TaskList = ({ tasks, onTaskUpdated, onTaskDeleted, setFilter, filter }) =>
                       <option>In Progress</option>
                       <option>Completed</option>
                     </select>
-                    <button className="btn btn-success btn-sm w-100" onClick={saveEdit}>Save</button>
+                    <button className="btn btn-success btn-sm w-100 mt-auto" onClick={saveEdit}>Save</button>
                   </>
                 ) : (
                   <>
@@ -91,7 +91,7 @@ const TaskList = ({ tasks, onTaskUpdated, onTaskDeleted, setFilter, filter }) =>
                     <p className="card-text">{task.description}</p>
                     <p><strong>Assigned To:</strong> {task.assignedTo}</p>
                     <p><strong>Status:</strong> {task.status}</p>
-                    <div className="d-flex justify-content-between">
+                    <div className="d-flex justify-content-between mt-auto">
                       <button className="btn btn-warning btn-sm" onClick={() => startEdit(task)}>Edit</button>
                       <button className="btn btn-danger btn-sm" onClick={() => handleDelete(task._id)}>Delete</button>
                     </div>
@@ -102,7 +102,6 @@ const TaskList = ({ tasks, onTaskUpdated, onTaskDeleted, setFilter, filter }) =>
           </div>
         ))}
       </div>
-
     </>
   );
 };
