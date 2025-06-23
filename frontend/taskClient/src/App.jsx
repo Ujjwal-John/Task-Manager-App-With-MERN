@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
+import Taskfilter from './components/Taskfilter';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -31,6 +32,7 @@ const App = () => {
       <div className="container pt-4">
         <h2 className='text-center text-white'>Task Manager</h2>
         <TaskForm onTaskAdded={fetchTasks} />
+        <Taskfilter setFilter={setFilter} filter={filter} />
 
         {/* ✅ Show loader or task list */}
         {loading ? (
@@ -38,15 +40,14 @@ const App = () => {
             <div className="spinner-border text-light" role="status">
               <span className="visually-hidden">Loading...</span>
             </div>
-            <p className="text-white mt-2">Please Wait Data is Loading...</p>
+            <p className="text-white mt-2">Please wait data is Loading...</p>
           </div>
         ) : (
           <TaskList
             tasks={tasks}
             onTaskUpdated={fetchTasks}
             onTaskDeleted={fetchTasks}
-            setFilter={setFilter}
-            filter={filter}
+            
           />
         )}
       </div>
