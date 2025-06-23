@@ -38,7 +38,7 @@ const App = () => {
             <div className="spinner-border text-light" role="status">
               <span className="visually-hidden">Loading...</span>
             </div>
-            <p className="text-white mt-2">Fetching tasks...</p>
+            <p className="text-white mt-2">Please Wait Data is Loading...</p>
           </div>
         ) : (
           <TaskList
